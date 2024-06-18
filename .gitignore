@@ -1,0 +1,121 @@
+.DS_STORE
+.vs/
+# This .gitignore file should be placed at the root of your Unity project directory
+# Ignore Configuration file
+Assets/Resources/config.json
+
+# Ignore the main build directory and related files
+/[Bb]uild/
+/[Bb]uilds/
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Uu]nityGenerated/
+
+# Ignore auto-generated asset files
+/[Aa]ssets/[Aa]ddressable[Aa]ssets[Dd]ata/*.bin
+/[Aa]ssets/[Aa]ddressable[Aa]ssets[Dd]ata/*.asset
+
+# Ignore log files
+/[Ll]ogs/
+
+# Ignore system-specific files
+/[Mm]emoryCaptures/
+[Dd]ebug.log
+[Dd]ebug-*.log
+
+# Ignore Visual Studio/MonoDevelop/JetBrains Rider project files
+/[Aa]ssets/*.csproj
+/[Aa]ssets/*.unityproj
+/[Aa]ssets/*.sln
+/[Aa]ssets/*.suo
+/[Aa]ssets/*.user
+/[Aa]ssets/*.userprefs
+/[Aa]ssets/*.pidb
+/[Aa]ssets/*.booproj
+/[Aa]ssets/*.svd
+/[Aa]ssets/.idea
+/[Aa]ssets/*.sln.dotSettings
+
+# Ignore unity build system folder
+/[Bb]uilds/
+
+# Ignore some custom asset folders
+/[Aa]ssets/[Aa]ssets~/
+/[Aa]ssets/[Ss]treaming[Aa]ssets/SteamingAssets.manifest
+
+# Ignore files from the Fusion library (adjust based on actual usage)
+# These are common files, adjust as necessary for your project.
+[Ff]usion/*
+/[Aa]ssets/[Ff]usion*
+
+
+
+# Ignore personal Unity settings
+/ProjectSettings/EditorBuildSettings.asset
+/ProjectSettings/EditorSettings.asset
+/ProjectSettings/ProjectSettings.asset
+/ProjectSettings/ProjectVersion.txt
+/ProjectSettings/QualitySettings.asset
+/ProjectSettings/TagManager.asset
+/ProjectSettings/TimeManager.asset
+/ProjectSettings/InputManager.asset
+/ProjectSettings/DynamicsManager.asset
+/ProjectSettings/Physics2DSettings.asset
+/ProjectSettings/UnityConnectSettings.asset
+/ProjectSettings/EditorUserSettings.asset
+
+# Ignore mono crash logs
+*.pidb
+*.pidb.meta
+*.pdb
+*.mdb
+
+# Ignore metadata files
+*.suo
+*.user
+*.userosscache
+*.sln.docsettings
+*.swp
+*.swpt
+
+# Ignore scripts and DLLs
+*.csproj
+*.unityproj
+*.pidb
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.booproj
+*.dll
+
+# Ignore temporary and cache files
+*.swp
+*.swpt
+*.tmp
+*.temp
+*.bak
+*.old
+
+# Ignore crash files
+*.stacktrace
+*.dmp
+*.nvram
+*.dylib
+
+# Ignore asset meta files
+*.meta
+
+# Ignore addressable assets state data
+/Library/com.unity.addressables/aa/Windows/StandaloneWindows64/
+
+# Ignore Fusion-specific files
+/FusionConfig/*
+
+# Ignore WebBuild
+/WebBuild/*
+
+# Ignore personal User settings
+/UserSettings/*
