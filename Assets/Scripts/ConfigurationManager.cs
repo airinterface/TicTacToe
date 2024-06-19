@@ -6,6 +6,9 @@ namespace Airinterface.TicTacToe
     public class Config
     {
         public string ApplicationID;
+        public string Region;
+        public int Port;
+        public string LocalServerAddress;
     }
 
 

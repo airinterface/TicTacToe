@@ -67,18 +67,7 @@ namespace Airinterface.TicTacToe
                 Instance = this;
             }
 
-            //else if (Instance != this)
-            //{
-            //    Destroy(this.gameObject);
-            //    return;
-            //}
-            //DontDestroyOnLoad(this.gameObject);
-
-            //if (isMutiPlayer)
-            //{
             Instantiate(NetworkPrefab);
-            
-            //}
             
 
         }

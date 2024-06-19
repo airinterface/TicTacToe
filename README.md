@@ -31,6 +31,7 @@ Next Move Evaluation: Game Manager handles manually
 
 
 # Running the game
+Enter AppID in the /Assets/Photon/Fusion/Resources/PhotonAppSettings.asset
 
 In the file Assets/Resources/config.json
 Add [Fusion](https://dashboard.photonengine.com/) pick up your Application ID
@@ -48,3 +49,4 @@ and place it there.
 1. simulation could be wiser using minimax algorithm.
 2. At the GameOver, replay button should bring it back to A->C
 3. Multiplayer flow test. 
+4. Moving AppID to the Configuration Assets/Resources/config.json

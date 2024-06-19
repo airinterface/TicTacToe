@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Fusion;
 using Fusion.Sockets;
-
+using System.Threading.Tasks;
 using System.Collections.Generic;
 using System;
 
@@ -29,14 +29,23 @@ namespace Airinterface.TicTacToe
                 Instance = this;
             } 
 
-            if (runner == null)
-            {
-                runner = gameObject.AddComponent<NetworkRunner>();
-            }
         }
 
-        public void Start()
+        public async void Start()
         {
+
+            await WaitForConfigLoader();
+            string appId = ConfigurationManager.Instance.Config.ApplicationID;
+            if (string.IsNullOrEmpty(appId))
+            {
+                Debug.LogError("Application ID is null or empty");
+                return;
+            }
+
+
+
+            Debug.Log("Using Application ID: " + appId);
+
             Debug.Log($"#TTT NetworkManager instaciated");
             startNetwork();
         }
@@ -45,22 +54,68 @@ namespace Airinterface.TicTacToe
         {
             Debug.Log("#TTT: Network Manager Start Network");
             string appId = ConfigurationManager.Instance.Config.ApplicationID;
+            string region = ConfigurationManager.Instance.Config.Region;
+            string network = ConfigurationManager.Instance.Config.LocalServerAddress;
+            int port = ConfigurationManager.Instance.Config.Port;
+            Debug.Log("Using Application ID: " + appId);
+            Debug.Log("Using Region: " + region);
+            Debug.Log("Using Local Server Address: " + network);
+            Debug.Log("Using Local Server Port: " + port);
+
+            Fusion.Photon.Realtime.FusionAppSettings appSettings = new Fusion.Photon.Realtime.FusionAppSettings
+            {
+                AppIdFusion = appId,
+                AuthMode = Fusion.Photon.Realtime.AuthModeOption.Auth,
+                //FixedRegion = region,
+                //Port = 5055,
+                //Server = network,
+                Protocol = ExitGames.Client.Photon.ConnectionProtocol.Udp
+
+            };
+            if (runner == null)
+            {
+                runner = gameObject.AddComponent<NetworkRunner>();
+            }
 
             // Create the Fusion runner and let it know that we will be providing user input
+
             runner.ProvideInput = true;
+
+
+
             // Start or join (depends on gamemode) a session with a specific name
 
-            _ = await runner.StartGame(new StartGameArgs()
+            var result = await runner.StartGame(new StartGameArgs()
             {
-                GameMode = GameMode.Shared,
-                PlayerCount = 2,
                 SessionName = "room_" + appId + "_" + System.DateTime.Now.Ticks,
+                GameMode = GameMode.Shared,
+                Scene = SceneRef.FromIndex(SceneManager.GetActiveScene().buildIndex),
+                SceneManager = gameObject.AddComponent<NetworkSceneManagerDefault>(),
+                CustomPhotonAppSettings = appSettings,
+                PlayerCount = 2,
                 IsVisible = true,
                 IsOpen = true,
-                Scene = SceneRef.FromIndex(SceneManager.GetActiveScene().buildIndex),
-                SceneManager = gameObject.AddComponent<NetworkSceneManagerDefault>()
             });
+            if (result.Ok)
+            {
+                Debug.Log("Game started successfully");
+            }
+            else
+            {
+                Debug.LogError("Failed to start game: " + result.ShutdownReason);
+            }
         }
+
+        
+        private async Task WaitForConfigLoader()
+        {
+            while (ConfigurationManager.Instance == null || ConfigurationManager.Instance.Config == null)
+            {
+                await Task.Yield();
+            }
+        }
+
+
 
         public void stopNetwork()
         {
