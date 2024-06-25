@@ -52,18 +52,18 @@ Assets/Resources/config.json
 
 
 # Ignore personal Unity settings
-/ProjectSettings/EditorBuildSettings.asset
-/ProjectSettings/EditorSettings.asset
-/ProjectSettings/ProjectSettings.asset
-/ProjectSettings/ProjectVersion.txt
-/ProjectSettings/QualitySettings.asset
-/ProjectSettings/TagManager.asset
-/ProjectSettings/TimeManager.asset
-/ProjectSettings/InputManager.asset
-/ProjectSettings/DynamicsManager.asset
-/ProjectSettings/Physics2DSettings.asset
-/ProjectSettings/UnityConnectSettings.asset
-/ProjectSettings/EditorUserSettings.asset
+# /ProjectSettings/EditorBuildSettings.asset
+# /ProjectSettings/EditorSettings.asset
+# /ProjectSettings/ProjectSettings.asset
+# /ProjectSettings/ProjectVersion.txt
+# /ProjectSettings/QualitySettings.asset
+# /ProjectSettings/TagManager.asset
+# /ProjectSettings/TimeManager.asset
+# /ProjectSettings/InputManager.asset
+# /ProjectSettings/DynamicsManager.asset
+# /ProjectSettings/Physics2DSettings.asset
+# /ProjectSettings/UnityConnectSettings.asset
+# /ProjectSettings/EditorUserSettings.asset
 
 # Ignore mono crash logs
 *.pidb
